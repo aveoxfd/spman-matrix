@@ -21,6 +21,14 @@ def get_spearman_matrix(matrix):
 
     return result
 
+def method_disagreement(matrix, normalized = True): #disagreement method
+    R = get_spearman_matrix(matrix)
+    n = len(R)
+    if normalized:
+        return [[(1 - R[i][j]) / 2 for j in range(n)] for i in range(n)]
+    else:
+        return [[1 - R[i][j] for j in range(n)] for i in range(n)]
+
 def print_matrix(matrix):
     for i in range(0, len(matrix)):
         for j in range(0, len(matrix[0])):
