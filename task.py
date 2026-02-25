@@ -1,5 +1,3 @@
-#матрица экспертов (согласия между экспертами)
-
 def spearman(x, y):
     n = len(x)
     sum = 0
@@ -30,17 +28,26 @@ def method_disagreement(matrix, normalized = True): #disagreement method
         return [[1 - R[i][j] for j in range(n)] for i in range(n)]
 
 def print_matrix(matrix):
-    for i in range(0, len(matrix)):
-        for j in range(0, len(matrix[0])):
+    alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+    # print column headers
+    print("   ", end="")
+    for j in range(len(matrix)):
+        print(alpha[j], end="   ")
+    print()
+    # print rows
+    for i in range(len(matrix)):
+        print(alpha[i], end=" ")
+        for j in range(len(matrix[i])):
             print(matrix[i][j], end=" ")
         print()
 
 if __name__ == "__main__":
     matrix = [
-        [3, 3, 1, 3],
-        [1, 1, 4, 4],
-        [2, 5, 5, 5],
-        [5, 2, 2, 1],
-        [4, 4, 3, 2]
-        ] #из практической работы 1, задание 1
+        [1, 3, 1, 1],
+        [2, 2, 3, 3],
+        [5, 4, 4, 5],
+        [4, 5, 5, 4],
+        [3, 1, 2, 2]
+        ]
     print_matrix(get_spearman_matrix(matrix))
